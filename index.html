@@ -15,11 +15,21 @@
   </div>
   <script src="TodoList.js"></script>
   <script>
+    <!--
+      This script sets up an event handler that executes when the window has finished loading.
+      Place initialization logic or DOM manipulation code inside the window.onload function
+      to ensure all HTML elements are available.
+    -->
     window.onload = function() {
       if (typeof addTask === 'function') {
         console.log('addTask is defined and ready!');
       } else {
         console.error('addTask is NOT defined!');
+      }
+       // Trigger addTask when Enter key is pressed in the input
+    document.getElementById("taskInput").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        addTask();
       }
     };
   </script>
