@@ -26,7 +26,6 @@ function addTask() {
     saveTasksToLocalStorage();
   }
   
-  // Save tasks to localStorage
   /**
    * Saves the current list of tasks to localStorage.
    * Each task includes its text and completion status.
@@ -44,6 +43,9 @@ function addTask() {
   
   // Load tasks from localStorage when page loads
   window.onload = function() {
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = ""; // Clear the list before loading
+  
     const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
     tasks.forEach(task => {
         const li = document.createElement("li");
@@ -54,7 +56,7 @@ function addTask() {
         if (task.completed) {
             li.querySelector("span").classList.add("completed");
         }
-        document.getElementById("taskList").appendChild(li);
+        taskList.appendChild(li);
     });
   
     document.getElementById("taskInput").addEventListener("keydown", function(event) {
@@ -62,4 +64,4 @@ function addTask() {
             addTask();
         }
     });
-  }
+};
